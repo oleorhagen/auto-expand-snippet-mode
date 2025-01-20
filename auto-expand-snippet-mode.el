@@ -1,11 +1,14 @@
 ;;; auto-expand-snippet-mode.el --- Simple snippet expander on <space>, -*- lexical-binding: t -*-
-;;; -*- read-symbol-shorthands: (("aes-" . "auto-expand-snippet-")) -*-
 
 ;; Copyright (C) 2025 Ole P. Orhagen
 
 ;; Author: Ole P. Orhagen <ole<at>orhagen.no>
-;; Keywords: yasnippet, autocomplete
+;; Keywords: convenience
 ;; Homepage: https://github.com/oleorhagen/auto-expand-snippet-mode/
+;; URL: https://github.com/oleorhagen/auto-expand-snippet-mode
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "29.1"))
+;; Keywords: evil, yasnippet, tools
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,12 +38,6 @@
 ;;
 ;; Restart Emacs and customize auto-expand-snippet-mode with
 ;;
-;;     M-x customize-group RET auto-expand-snippet-mode RET
-;;
-;; The two most important configuration options are:
-;;
-;;    - `auto-expand-snippet-remove-comma-on-snippet-not-found', whether or not to
-;;    - remove the prefix comma if no snippet is found
 
 ;; Usage
 ;; =====
@@ -59,22 +56,22 @@
 
 ;;; Code:
 
-(defun aes--is-xpander-key-p  ()
-  "Checks if the preceding word matches the expected <space>,<snippet><space> pattern"
+(defun auto-expand-snippet--is-xpander-key-p  ()
+  "Checks if the preceding word matches the expected <space>,<snippet><space> pattern."
   (interactive)
   (looking-back ",\\w+ " (point-at-bol)))
 
 
-(defun aes--current-word-is-a-snippet-p ()
-  "Checks if the current word in the pattern is a snippet"
+(defun auto-expand-snippet--current-word-is-a-snippet-p ()
+  "Checks if the current word in the pattern is a snippet."
   (interactive)
   (save-excursion
     (backward-char)
     (member (word-at-point t) (yas-active-keys))))
 
 
-(defun aes--prepare-word ()
-  "Remove the surrounding pattern <space> and <comma>, before expanding the snippet"
+(defun auto-expand-snippet--prepare-word ()
+  "Remove the surrounding pattern <space> and <comma>, before expanding the snippet."
   (save-excursion
     (backward-char)     ;; Back to the beginning of the word
     (delete-char 1)     ;; Delete the prefix <space>
@@ -84,31 +81,29 @@
     (forward-word)))
 
 
-(defun aes--is-single-comma ()
-  "Sentinel for the single comma pattern: <space><,><space>"
+(defun auto-expand-snippet--is-single-comma ()
+  "Sentinel for the single comma pattern: <space><,><space>."
   (interactive)
   (looking-back " , "))
 
-(defun aes-try-n-xpand-word ()
-  "Expands the snippet if the previous text matches the pattern as
-set out by aes--is-xpander-key-p, and the word is a yasnippet
-snippet."
+(defun auto-expand-snippet-try-n-xpand-word ()
+  "Expands the snippet if the previous text matches the pattern as set out by auto-expand-snippet--is-xpander-key-p, and the word is a yasnippet snippet."
   (interactive)
   (cond ((and (derived-mode-p 'prog-mode)
               (equal (string (char-before)) " ") ;; Only try-and-xpand on the last <space> insert
-              (aes--is-xpander-key-p)
-              (aes--current-word-is-a-snippet-p) ;; Only run the body when the word is a snippet
+              (auto-expand-snippet--is-xpander-key-p)
+              (auto-expand-snippet--current-word-is-a-snippet-p) ;; Only run the body when the word is a snippet
               )
-         (aes--prepare-word)
+         (auto-expand-snippet--prepare-word)
          (evil-insert-state)       ;; Back over the space
          (yas-expand))
-        ((aes--is-single-comma)
+        ((auto-expand-snippet--is-single-comma)
          (delete-backward-char 3) ;; Delete the whole pattern '<space><comma><space>'
          (yas-insert-snippet)))) ;; Enter insert
 
 ;;;###autoload
 (define-minor-mode auto-expand-snippet-mode
-  "If enabled, expands snippets automatically from Yasnippet if prefixed with comma"
+  "If enabled, expands snippets automatically from Yasnippet if prefixed with comma."
   :lighter "XPand"
   :require '( evil yasnippet )
   :global nil
@@ -124,6 +119,4 @@ snippet."
 
 (provide 'auto-expand-snippet-mode)
 
-;; Local Variables:
-;; read-symbol-shorthands: (("aes-" . "auto-expand-snippet-"))
-;; End:
+;;; auto-expand-snippet-mode.el ends here
