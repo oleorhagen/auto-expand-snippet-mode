@@ -7,8 +7,8 @@
 ;; Homepage: https://github.com/oleorhagen/auto-expand-snippet-mode/
 ;; URL: https://github.com/oleorhagen/auto-expand-snippet-mode
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "29.1") (evil "1.15.0") (yasnippet "0.14.0"))
-;; Keywords: evil, yasnippet, tools
+;; Package-Requires: ((emacs "29.1") (yasnippet "0.14.0"))
+;; Keywords: yasnippet, tools
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -56,7 +56,6 @@
 
 ;;; Code:
 
-(require 'evil)
 (require 'yasnippet)
 (require 'thingatpt)
 
@@ -106,7 +105,7 @@
               (auto-expand-snippet--current-word-is-a-snippet-p) ;; Only run the body when the word is a snippet
               )
          (auto-expand-snippet--prepare-word)
-         (evil-insert-state)       ;; Back over the space
+         (backward-char)       ;; Back over the space
          (yas-expand))
         ((auto-expand-snippet--is-single-comma)
          (delete-char -3) ;; Delete the whole pattern '<space><comma><space>'
