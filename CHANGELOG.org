@@ -6,6 +6,10 @@
 
 *** Flash the text when no snippet key match was found
 
+*** Remove the dependency on evil (it really shouldn't be necessary)
+
+But it was a good first step for now.
+
 ** Unreleased
 
 ** Remark
