@@ -61,9 +61,11 @@
 (require 'thingatpt)
 
 (defun auto-expand-snippet--is-xpander-key-p  ()
-  "Checks if the preceding word matches the expected <space>,<snippet><space> pattern."
+  "Checks if the preceding word matches the expected:
+
+ <space>,<snippet><space> pattern."
   (interactive)
-  (looking-back ",\\w+ " (point-at-bol)))
+  (looking-back ",\\w+ " (line-beginning-position)))
 
 
 (defun auto-expand-snippet--current-word-is-a-snippet-p ()
@@ -75,7 +77,9 @@
 
 
 (defun auto-expand-snippet--prepare-word ()
-  "Remove the surrounding pattern <space> and <comma>, before expanding the snippet."
+  "Remove the surrounding pattern:
+
+ <space> and <comma>, before expanding the snippet."
   (save-excursion
     (backward-char)     ;; Back to the beginning of the word
     (delete-char 1)     ;; Delete the prefix <space>
@@ -88,10 +92,13 @@
 (defun auto-expand-snippet--is-single-comma ()
   "Sentinel for the single comma pattern: <space><,><space>."
   (interactive)
-  (looking-back " , "))
+  (looking-back " , " (line-beginning-position)))
 
 (defun auto-expand-snippet-try-n-xpand-word ()
-  "Expands the snippet if the previous text matches the pattern as set out by auto-expand-snippet--is-xpander-key-p, and the word is a yasnippet snippet."
+  "Expands the snippet if the previous text matches:
+
+ the pattern as set out by auto-expand-snippet--is-xpander-key-p,
+ and the word is a yasnippet snippet."
   (interactive)
   (cond ((and (derived-mode-p 'prog-mode)
               (equal (string (char-before)) " ") ;; Only try-and-xpand on the last <space> insert
@@ -102,14 +109,17 @@
          (evil-insert-state)       ;; Back over the space
          (yas-expand))
         ((auto-expand-snippet--is-single-comma)
-         (delete-backward-char 3) ;; Delete the whole pattern '<space><comma><space>'
+         (delete-char -3) ;; Delete the whole pattern '<space><comma><space>'
          (yas-insert-snippet)))) ;; Enter insert
 
 ;;;###autoload
 (define-minor-mode auto-expand-snippet-mode
-  "If enabled, expands snippets automatically from Yasnippet if prefixed with comma."
+  "If enabled, expands snippets automatically.
+
+ The snippets are matched with Yasnippet provided snippets
+ if prefixed with comma."
   :lighter "XPand"
-  :require '( evil yasnippet )
+  :require '( evil yasnippet thingatpt)
   :global nil
   :version "1.0.0"
   (if auto-expand-snippet-mode
