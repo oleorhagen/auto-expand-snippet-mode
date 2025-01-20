@@ -7,7 +7,7 @@
 ;; Homepage: https://github.com/oleorhagen/auto-expand-snippet-mode/
 ;; URL: https://github.com/oleorhagen/auto-expand-snippet-mode
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "29.1"))
+;; Package-Requires: ((emacs "29.1") (evil "1.15.0") (yasnippet "0.14.0"))
 ;; Keywords: evil, yasnippet, tools
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -55,6 +55,10 @@
 ;; using Emacs versions 29.x
 
 ;;; Code:
+
+;; (require 'evil)
+(require 'yasnippet)
+(require 'thingatpt)
 
 (defun auto-expand-snippet--is-xpander-key-p  ()
   "Checks if the preceding word matches the expected <space>,<snippet><space> pattern."
