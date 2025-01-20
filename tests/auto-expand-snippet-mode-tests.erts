@@ -6,17 +6,24 @@ Code:
   (auto-expand-snippet-mode)
   (auto-expand-snippet-try-n-xpand-word))
 
-Name: try-n-expand no hits
 
+Name: try-n-expand no hits
 
 =-=
 foobar|
 =-=
-foobar
+foobar|
 =-=-=
 
+Name: No snippet match should not change any text
 
-Name: Test snippet expansion with a prefixed space
+=-=
+,idonotexist|
+=-=
+,idonotexist|
+=-=-=
+
+Name: Test snippet expansion _with_ a prefixed space
 
 =-=
  ,a |
@@ -33,11 +40,3 @@ Name: Test snippet expansion _without_ a prefixed space
 (and |)
 =-=-=
 
-
-;; Name: Test snippet search on single comma
-
-;; =-=
-;;  , |
-;; =-=
-
-;; =-=-=

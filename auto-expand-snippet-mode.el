@@ -56,7 +56,7 @@
 
 ;;; Code:
 
-;; (require 'evil)
+(require 'evil)
 (require 'yasnippet)
 (require 'thingatpt)
 
