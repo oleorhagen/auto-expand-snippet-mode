@@ -56,8 +56,8 @@
 
 ;;; Code:
 
-(require 'yasnippet)
 (require 'thingatpt)
+(require 'yasnippet)
 
 (defun auto-expand-snippet--is-xpander-key-p  ()
   "Checks if the preceding word matches the expected:
@@ -118,17 +118,17 @@
  The snippets are matched with Yasnippet provided snippets
  if prefixed with comma."
   :lighter "XPand"
-  :require '( evil yasnippet thingatpt)
+  :require 'yasnippet
   :global nil
   :version "1.0.0"
   (if auto-expand-snippet-mode
       (progn
         ;; When enabling the minor mode
         (add-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
-        (message "My expand snippet mode enabled."))
+        (message "auto-expand-snippet-mode enabled."))
     ;; When disabling the minor mode
     (remove-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
-    (message "My expand snippet mode disabled.")))
+    (message "auto-expand-snippet-mode disabled.")))
 
 (provide 'auto-expand-snippet-mode)
 
