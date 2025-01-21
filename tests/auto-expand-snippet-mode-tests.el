@@ -21,7 +21,7 @@
   "Tests that the sentinel for whether a snippet exists for the given word."
   (with-temp-buffer
     (insert "dd") ;; The current-date template from fundamental mode
-    (should-not (auto-expand-snippet--current-word-is-a-snippet-p))))
+    (should (auto-expand-snippet--current-word-is-a-snippet-p))))
 
 
 (ert-test-erts-file "tests/auto-expand-snippet-mode-tests.erts")

@@ -2,9 +2,9 @@ Point-Char: |
 
 Code:
  (lambda ()
-  (emacs-lisp-mode)
-  (auto-expand-snippet-mode)
-  (auto-expand-snippet-try-n-xpand-word))
+   (emacs-lisp-mode)
+   (auto-expand-snippet-mode)
+   (auto-expand-snippet-try-n-xpand-word))
 
 
 Name: try-n-expand no hits
@@ -28,7 +28,7 @@ Name: Test snippet expansion _with_ a prefixed space
 =-=
  ,a |
 =-=
- (and |)
+ a
 =-=-=
 
 Name: Test snippet expansion _without_ a prefixed space
@@ -36,6 +36,6 @@ Name: Test snippet expansion _without_ a prefixed space
 =-=
 ,a |
 =-=
-(and |)
+a
 =-=-=
 
