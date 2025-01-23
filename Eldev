@@ -17,6 +17,9 @@
 (setq eldev-test-framework 'ert)
 (eldev-add-loading-roots 'test "tests")
 
+;;; Add yasnippet-snippets as a dependency for the tests
+(eldev-add-extra-dependencies 'test 'yasnippet-snippets)
+
 ;; Tell checkdoc not to demand two spaces after a period.
 (setq sentence-end-double-space nil)
 
