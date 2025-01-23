@@ -22,7 +22,6 @@ jobs:
       matrix:
         emacs_version:
           # Add more lines like this if you want to test on different Emacs versions.
-          - 29.1
           - snapshot
 
     steps:
@@ -55,7 +54,6 @@ jobs:
       fail-fast: false
       matrix:
         emacs_version:
-          - 29.1
           - snapshot
 
     steps:
