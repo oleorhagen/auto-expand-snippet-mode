@@ -1,0 +1,49 @@
+#+STARTUP: content
+
+* auto-expand-snippet-mode
+
+[[https://www.gnu.org/licenses/gpl-3.0][https://img.shields.io/badge/License-GPL%20v3-blue.svg]] [[https://github.com/hubisan/emacs-lisp-package-template/actions/workflows/tests.yml][https://github.com/oleorhagen/auto-expand-snippet-mode/actions/workflows/tests.yml/badge.svg]]
+
+A small minor mode for Emacs, which expand yasnippet snippets on a prefix match
+for the Yasnippet key.
+
+** Usage
+
+The mode will try and expand the word directly following a comma (,), using
+`yas-expand.
+
+# Purpose of package
+
+** Installation
+:PROPERTIES:
+:CUSTOM_ID: installation
+:END:
+
+Copy auto-expand-snippet-mode.el to your load-path and add to your .emacs:
+
+#+begin_src emacs-lisp
+(require 'auto-expand-snippet-mode)
+(auto-expand-snippet-mode)
+#+end_src
+
+*** Dependencies
+
+The package depends on [Yasnippet](https://github.com/joaotavora/yasnippet).
+
+** Changelog
+:PROPERTIES:
+:CUSTOM_ID: changelog
+:END:
+
+See the [[./CHANGELOG.org][changelog]].
+
+** Contributing
+:PROPERTIES:
+:CUSTOM_ID: contributing
+:END:
+
+Use the issue tracker to reports bugs, suggest improvements or propose new
+features. If you want to contribute please open a pull request after having
+opened a new issue.
+
+In any case please check out the [[./CONTRIBUTING.org::*Contributing][contributing guidelines]] beforehand.
