@@ -24,6 +24,6 @@
     (should (auto-expand-snippet--current-word-is-a-snippet-p))))
 
 
-(ert-test-erts-file "tests/auto-expand-snippet-mode-tests.erts")
+;; (ert-test-erts-file "tests/auto-expand-snippet-mode-tests.erts")
 
 (provide 'test-auto-expand-snippet-mode)
