@@ -124,10 +124,10 @@
   (if auto-expand-snippet-mode
       (progn
         ;; When enabling the minor mode
-        (add-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
+        (add-hook 'post-self-insert-hook 'auto-expand-snippet-try-n-xpand-word)
         (message "auto-expand-snippet-mode enabled."))
     ;; When disabling the minor mode
-    (remove-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
+    (remove-hook 'post-self-insert-hook 'auto-expand-snippet-try-n-xpand-word)
     (message "auto-expand-snippet-mode disabled.")))
 
 (provide 'auto-expand-snippet-mode)
