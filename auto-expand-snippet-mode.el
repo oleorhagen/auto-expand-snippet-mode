@@ -105,7 +105,6 @@
               (auto-expand-snippet--current-word-is-a-snippet-p) ;; Only run the body when the word is a snippet
               )
          (auto-expand-snippet--prepare-word)
-         (backward-char)       ;; Back over the space
          (yas-expand))
         ((auto-expand-snippet--is-single-comma)
          (delete-char -3) ;; Delete the whole pattern '<space><comma><space>'

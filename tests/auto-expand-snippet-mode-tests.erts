@@ -26,9 +26,9 @@ Name: No snippet match should not change any text
 Name: Test snippet expansion _with_ a prefixed space
 
 =-=
- ,a |
+,a |
 =-=
- a
+a
 =-=-=
 
 Name: Test snippet expansion _without_ a prefixed space
@@ -39,3 +39,10 @@ Name: Test snippet expansion _without_ a prefixed space
 a
 =-=-=
 
+Name: Test snippet expansion from a prog-mode snippet (in elisp mode)
+
+=-=
+,co |
+=-=
+; |comment
+=-=-=
