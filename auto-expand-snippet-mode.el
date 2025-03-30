@@ -123,6 +123,7 @@
   (if auto-expand-snippet-mode
       (progn
         ;; When enabling the minor mode
+        (yas-minor-mode-on)
         (add-hook 'post-self-insert-hook 'auto-expand-snippet-try-n-xpand-word)
         (message "auto-expand-snippet-mode enabled."))
     ;; When disabling the minor mode
