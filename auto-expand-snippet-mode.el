@@ -105,7 +105,6 @@
               (auto-expand-snippet--current-word-is-a-snippet-p) ;; Only run the body when the word is a snippet
               )
          (auto-expand-snippet--prepare-word)
-         (backward-char)       ;; Back over the space
          (yas-expand))
         ((auto-expand-snippet--is-single-comma)
          (delete-char -3) ;; Delete the whole pattern '<space><comma><space>'
@@ -124,10 +123,11 @@
   (if auto-expand-snippet-mode
       (progn
         ;; When enabling the minor mode
-        (add-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
+        (yas-minor-mode 1)
+        (add-hook 'post-self-insert-hook 'auto-expand-snippet-try-n-xpand-word)
         (message "auto-expand-snippet-mode enabled."))
     ;; When disabling the minor mode
-    (remove-hook 'post-self-insert-hook 'mes-try-n-xpand-word)
+    (remove-hook 'post-self-insert-hook 'auto-expand-snippet-try-n-xpand-word)
     (message "auto-expand-snippet-mode disabled.")))
 
 (provide 'auto-expand-snippet-mode)

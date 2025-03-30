@@ -2,7 +2,7 @@
 
 .PHONY: help all test test-as-is lint compile clean run-emacs
 
-verbose ?= 
+verbose ?=
 
 help:
 	$(info )
