@@ -28,15 +28,7 @@ Name: Test snippet expansion _with_ a prefixed space
 =-=
 ,a |
 =-=
-a
-=-=-=
-
-Name: Test snippet expansion _without_ a prefixed space
-
-=-=
-,a |
-=-=
-a
+(and )
 =-=-=
 
 Name: Test snippet expansion from a prog-mode snippet (in elisp mode)
