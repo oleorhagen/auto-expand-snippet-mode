@@ -16,6 +16,8 @@ The mode will try and expand the word directly following a comma (,), using
 
 ![Demo](./assets/example.mp4)
 
+file:assets/example.mp4
+
 # Purpose of package
 
 ** Installation
