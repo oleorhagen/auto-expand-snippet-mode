@@ -10,13 +10,9 @@ for the Yasnippet key.
 ** Usage
 
 The mode will try and expand the word directly following a comma (,), using
-`yas-expand`.
+_yas-expand_.
 
-[![Demo](./assets/thumbnail.png)](./assets/example.mp4)
-
-![Demo](./assets/example.mp4)
-
-file:assets/example.mp4
+[![Example](https://raw.githubusercontent.com/oleorhagen/auto-expand-snippet-mode/master/assets/thumbnail.png)](https://raw.githubusercontent.com/oleorhagen/auto-expand-snippet-mode/master/assets/example.mp4)
 
 # Purpose of package
 
